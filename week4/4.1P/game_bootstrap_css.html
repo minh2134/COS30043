@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<title>Pass Task 4.1: Event Handling</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--- Bootstrap --->
+		<link href="framework/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container" id="app">
+			<div class="row">
+				<h1>Number Guessing Game</h1>
+			</div>
+			<div class="row mb-4">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="numberguess">Enter your guess from 1 to 100:</span>
+					</div>
+					<input type="number" v-model="userNumber" class="form-control" aria-label="Default" aria-describedby="numberguess">
+				</div>
+			</div>
+			<div class="col">
+				<button type="submit" v-on:click="updateDelta" class="me-2 btn btn-primary">Check Guess</button>
+				<button type="button" v-on:click="giveUp" class="me-2 btn btn-danger">Give Up</button>
+				<button type="reset" v-on:click="reset" class="me-2 btn btn-secondary">Start Over</button>
+			</div>
+			<div class="row">
+				<hint v-show="delta == null" value="Start guessing."></hint>
+				<hint v-show="delta < 0" value="Guess higher."></hint>
+				<hint v-show="delta > 0" value="Guess lower."></hint>
+				<hint v-show="delta == 0" value="You got it!"></hint>
+			</div>
+			<div class="row">
+				<span v-show="givenUp">Target number is: {{ target }}</span>
+			</div>
+		</div>
+
+
+		<!-- Bootstrap javascript plug-ins -->
+		<script src="framework/js/bootstrap.bundle.min.js"></script>
+		<!--  Loading VueJS -->
+		<script src="framework/js/vue.js"></script>
+		<!-- Loading local script -->
+		<script src="js/appgame.js"></script>
+	</body>
+</html>
