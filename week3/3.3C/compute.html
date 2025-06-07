@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Credit Task 3.3: Compute Web App</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+</head>
+
+<body>
+	<h1>Compute App</h1>
+	<div id="app">
+		<p><label for="weight">Enter weight in kilograms:</label>
+		<input id="weight" type="number" v-model="numWt"></p>
+		
+		<p><label for="height">Enter height in centimetres:</label>
+		<input id="height" type="number" v-model="numHt"  /> 
+		</p>
+		<p>
+		Computed BMI is: {{ parseFloat(numBMI).toFixed(2) }} <!--- double decimal digit precision ---> 
+			<span v-if="numBMI < 18.5">Underweight</span>
+			<span v-else-if="numBMI < 25">Normal</span>
+			<span v-else-if="numBMI < 30">Overweight</span>
+			<span v-else>Obese</span>
+		</p>   
+	</div>
+ 
+	<!-- <script src="https://unpkg.com/vue@3"></script>    -->
+	<script src="framework/js/vue.js"></script>
+	
+	<script>
+ 		//creating new Vue instance
+		Vue.createApp({  //create a new application instance
+			data() {      //data 
+				return {numWt:0,  numHt:0}
+			},
+			computed: {
+				numBMI: function() {
+					var numHtMetre = this.numHt / 100; // convert to metre
+					if (numHtMetre === 0) {
+						return 0;
+					}
+					return this.numWt / (numHtMetre * numHtMetre);
+				}
+			}
+		}).mount('#app');
+	</script>
+</body>
+
+</html>

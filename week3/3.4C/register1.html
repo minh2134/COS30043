@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html  lang="en">
+	<head>
+		<title>Credit Task 3.4: Registration Form Web App</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--- Bootstrap --->
+		<link href="framework/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container" id="app">
+			<div class="row">
+				<h1>Registration App: Cloud Service</h1>
+			</div>
+			<div class="row py-4">
+				<h2>Login Information</h2>
+				<div class="d-grid gap-2">
+					<label>Enter user name: <input type="text" id="username" v-model="usr.userName"></label>
+
+					<label>Enter password: <input type="password" id="passwd" v-model="usr.passwd"></label>
+
+					<label>
+						Re-enter password: <input type="password" id="repasswd" v-model="rePasswd">
+						<span v-show="rePasswd != usr.passwd"> Password does not match</span>
+					</label>
+				</div>
+			</div>
+
+			<div class="row pb-4">
+				<h2>Phone Information</h2>
+			</div>
+
+			<div class="row pb-4">
+				<div class="col">
+					<h3>Operating System</h3>
+					<label class="pe-2"><input type="radio" id="android" value="Android" v-model="usr.phone.os" v-on:change="resetPhoneModel">Android</label>
+					<label class="pe-2"><input type="radio" id="ios" value="IOS" v-model="usr.phone.os">IOS</label>
+					<label><input type="radio" id="windows" value="Windows" v-model="usr.phone.os">Windows</label>
+				</div>
+				<div class="col">
+					<h3>Model</h3>
+					<label>Select phone model:<select id="phonemodel" name="model" v-model="usr.phone.model">
+							<option value="" selected disabled>Choose phone model</option>
+							<option v-for="phone in filterPhones">{{ phone.model }}</option>
+						</select>
+					</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<h2>Summary</h2>
+
+				<ul class="ps-4">
+					<li>Username: {{ usr.userName }}</li>
+					<li>OS: {{ usr.phone.os }}</li>
+					<li>Phone: {{ usr.phone.model }}</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<!-- Bootstrap javascript plug-ins -->
+		<script src="framework/js/bootstrap.bundle.min.js"></script>
+		<!--  Loading VueJS -->
+		<script src="framework/js/vue.js"></script>
+		<script>
+			// raw data
+			const phoneData = [
+				{model:'HTC 10', os:'Android'},
+				{model:'Nokia 6', os:'Android'},
+				{model:'Samsung Galaxy 20 Ultra', os:'Android'},
+				{model:'IDD VIOS Non Windows', os:'Android'},
+				{model:'iPhone X', os:'IOS'},
+				{model:'iPhone Xs Max', os:'IOS'},
+				{model:'iPhone 11 Pro Max', os:'IOS'},
+				{model:'IDD Windows Non Android', os:'IOS'},
+				{model:'HP Elite x3', os:'Windows'},
+				{model:'Microsoft 950', os:'Windows'},
+				{model:'Microsoft 950XL', os:'Windows'},
+				{model:'IDD VIOS Non Android', os:'Windows'}
+			];
+
+			//creating new Vue instance
+			Vue.createApp({  //create a new application instance
+				data() {      //data 
+					return {
+						usr: { 
+							userName:'', 
+							passwd:'', 
+							phone: {
+								os: '',
+								model: ''
+							}, 
+							type:''}, 
+						rePasswd: '',
+						phones: phoneData
+					}
+				},
+				computed: {
+					filterPhones: function() {
+						return this.phones.filter(m => 
+							m.os.toLowerCase().match(this.usr.phone.os.toLowerCase()) 
+						);
+					},
+					resetPhoneModel: function() {
+						this.usr.phone.model = '';
+					}
+				}
+			}).mount('#app');
+		</script>
+	</body>
+</html>
+
