@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WAI Table Task</title>
+	<meta charset="utf-8">
+	<meta name="language" content="english">
+	<meta name="keywords" content="Accessibility,Lab,Tasks">
+	<meta name="description" content="WAI Table Task">
+</head>
+<body>
+	<h1>WAI Table Example</h1>
+	<p>Team Sales from 2013-16 (in millions of $)</p>
+	<table>
+		<caption>Team Sales from 2013-16</caption>
+		<thead>
+			<tr>
+				<th scope="col" id="co0">Team</th>
+				<th scope="col" id="co1">2013</th>
+				<th scope="col" id="co2">2014</th>
+				<th scope="col" id="co3">2015</th>
+				<th scope="col" id="co4">2016</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row" id="ro1">Alpha</th>
+				<td headers="co1 ro1">80</td>
+				<td headers="co2 ro1">90</td>
+				<td headers="co3 ro1">94</td>
+				<td headers="co4 ro1">96</td>
+			</tr>
+
+			<tr>
+				<th scope="row" id="ro2">Bravo</th>
+				<td headers="co1 ro2">55</td>
+				<td headers="co2 ro2">59</td>
+				<td headers="co3 ro2">55</td>
+				<td headers="co4 ro2">59</td>
+			</tr>
+
+			<tr>
+				<th scope="row" id="ro3">Charlie</th>
+				<td headers="co1 ro3">25</td>
+				<td headers="co2 ro3">25</td>
+				<td headers="co3 ro3">28</td>
+				<td headers="co4 ro3">30</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

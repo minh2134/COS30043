@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="index.css">
+	</head>
+
+	<body>
+		<header>
+			<h1> Hexapawn! </h1>
+		</header>
+		<nav>
+			<button popovertarget="Introduction">Introduction</button>
+			<button popovertarget="howtoplay">How To Play</button>
+		</nav>
+
+		<!--- popovers --->
+		<div id="Introduction" popover="" class="popover">
+			<p> Hexapawn is a deterministic two-player game invented by Martin Gardner. It is played on a rectangular board of variable size, for example on a 3×3 board or on a regular chessboard. On a board of size n×m, each player begins with m pawns, one for each square in the row closest to them. The goal of each player is to either advance a pawn to the opposite end of the board or leave the other player with no legal moves, either by stalemate or by having all of their pieces captured. (Wikipedia)
+			</p>
+		</div>
+
+		<div id="howtoplay" popover="" class="popover">
+			<section>
+				<p>
+				This game goal is to advance your pawn to the other side's home row. Pawns move identically to chess's pawns. White moves first.
+				</p>
+				<p>
+				You move your pawn by specify your starting cell and your ending cell in the form "a1b1". This will move the pawn at <b>a1</b> to the cell <b>b1</b>. Input your move in the textbox below then click <b>Move</b> button.
+				</p>
+				<p>
+				You can click <b>Restart</b> to reset the game state
+				</p>
+		</div>
+
+		<div class="break-column"></div>
+		<main>
+			<div class="gamespace">
+				<table class="gametable" id="gametable">
+					<thead>
+						<tr>
+							<th></th>
+							<th>a</th>
+							<th>b</th>
+							<th>c</th>
+						</tr>
+					</thead>	
+					<tbody>
+						<tr>
+							<th>1</th>
+							<td id="a1">
+								<img src="assets/blackpawn.png">
+							</td>
+							<td id="a2">
+								<img src="assets/blackpawn.png">
+							</td>
+							<td id="a3">
+								<img src="assets/blackpawn.png">
+							</td>
+						</tr>
+						<tr>
+							<th>2</th>
+							<td id="b1">
+							</td>
+							<td id="b2">
+							</td>
+							<td id="b3">
+							</td>
+						</tr>
+						<tr>
+							<th>3</th>
+							<td id="c1">
+								<img src="assets/whitepawn.png">
+							</td>
+							<td id="c2">
+								<img src="assets/whitepawn.png">
+							</td>
+							<td id="c3">
+								<img src="assets/whitepawn.png">
+							</td>
+						</tr>
+					</tbody>
+
+
+				</table>
+
+
+			</div>
+			<div class="break"></div>
+			<div id="move">
+				<label for="movebox">Enter your move:</label>
+				<input id="movebox"></input>
+				<button onclick="movePlayer();" id="movebutton">Move</button>
+			</div>
+			<div id="buttons">
+				<button onclick="resetGame();">Restart</button>
+				<button hidden>Reset</button>
+			</div>
+		</main>
+		<aside>
+			<section>
+				<h3>Game statistics:</h3>
+				<p>Status: <span id="gamestatus">Ongoing</span></p>
+				<p>Current Player: <span id="player">White</span></p>
+				<p>Current win streak: <span id="winstreak">0</span></p>
+				<p>Current highest win streak: <span id="highestwinstreak">0</span></p>
+			</section>
+			<section>
+				<h3>AI:</h3>
+				<p>Current losing path found: <span id="losingpath">0</span></p>
+			</section>
+		</aside>
+
+		
+		<script src="index.js"></script>
+	</body>
+</html>
